@@ -1,29 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-/*import Card from './assets/components/Card'
-import AddProperty from './assets/components/AddProperty'
-import Login from './assets/components/Login'
-import Error from './assets/components/Error'
-*/
-import Card from './assets/components/Card'
+import React from 'react';
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+
+import Card from './assets/components/Card';
+import Hero from './components/Hero';
+import RegisterPage from './components/RegisterPage';
+import RecommendedSection from './components/RecommendedSection';
+import Services from './components/Services';
+import LocationCarousel from './components/LocationCarousel';
+import Testimonials from './components/Testimonials';
+import BlogPosts from './components/BlogPosts';
+import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-     {/*<Card/>
-      <AddProperty/>
-      <Login/>
-        <Error/>
-        <AddProperty/>
-      */}
-      <Card/>
-      
+      <Navbar />
+      <Hero />
+      <RegisterPage />
+      <RecommendedSection />
+      <Services />
+      <LocationCarousel />
+      <Testimonials />
+      <BlogPosts />
+      <Footer />
+      <Card />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

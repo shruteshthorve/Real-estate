@@ -1,6 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
+import Login from './Login'; // Make sure the path is correct
 
 const Register = () => {
+  const [showLogin, setShowLogin] = useState(false); // State to toggle forms
   const [formData, setFormData] = useState({
     email: '',
     mobileNumber: '',
@@ -19,43 +22,42 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add form submission logic here
     console.log(formData);
   };
 
   const handleLogin = () => {
-    // Redirect to login page or show login form
-    console.log('Navigate to login');
+    setShowLogin(true);
   };
 
   const handleRegister = () => {
-    // Handle registration logic
-    console.log('Register clicked');
+    setShowLogin(false);
   };
 
-          
+  if (showLogin) {
+    return <Login onSwitchToRegister={handleRegister} />; // Render Login component with prop to switch back to Register
+  }
+
   return (
-    <div className="flex items-center justify-center min-h-screen    px-10 py-10">
+    <div className="flex items-center justify-center min-h-screen px-10 py-10">
       <div className="bg-gray-200 p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="flex justify-between gap-4 mt-6">
           <button
             type="button"
             onClick={handleLogin}
-            className="w-full bg-white text-custom-red py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+            className="w-full bg-white text-custom-red py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
           >
             Login
           </button>
           <button
             type="button"
             onClick={handleRegister}
-            className="w-full bg-custom-red text-white py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+            className="w-full bg-custom-red text-white py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
           >
             Register
           </button>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4 mt-6">
           <div>
-          
             <select
               id="userType"
               name="userType"
@@ -66,10 +68,8 @@ const Register = () => {
               <option value="buyer" className="text-neutral-900">Buyer</option>
             </select>
           </div>
-          <div  >
-          
+          <div>
             <input
-            
               type="email"
               name="email"
               id="email"
@@ -81,7 +81,6 @@ const Register = () => {
             />
           </div>
           <div>
-            
             <input
               type="text"
               name="mobileNumber"
@@ -94,20 +93,6 @@ const Register = () => {
             />
           </div>
           <div>
-           
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              required
-              placeholder='Email Address'
-            />
-          </div>
-          <div>
-          
             <input
               type="password"
               name="password"
@@ -120,7 +105,6 @@ const Register = () => {
             />
           </div>
           <div>
-           
             <input
               type="password"
               name="confirmPassword"
@@ -157,7 +141,7 @@ const Register = () => {
             </button>
           </div>
           <p className="mt-4 text-center text-gray-600 text-sm">
-            Already have an account? <a href="/login" className="text-red-500">Login here</a>
+            Already have an account? <a href="#" onClick={handleLogin} className="text-red-500">Login here</a>
           </p>
         </form>
       </div>
@@ -166,4 +150,3 @@ const Register = () => {
 };
 
 export default Register;
-
